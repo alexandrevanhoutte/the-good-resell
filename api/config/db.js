@@ -6,6 +6,7 @@ const MONGOURI = process.env.MANGO_URL
 const InitiateMongoServer = async () => {
   try {
     await mongoose.connect(MONGOURI, {
+      auth: {authdb: "admin"},
       useUnifiedTopology: true,
       useNewUrlParser: true
     });
