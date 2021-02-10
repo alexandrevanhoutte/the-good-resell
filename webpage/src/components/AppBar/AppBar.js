@@ -9,6 +9,12 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Grid from '@material-ui/core/Grid';
 import Search from '../AppBar/Search';
 
+
+import Badge from '@material-ui/core/Badge';
+import MailIcon from '@material-ui/icons/Mail';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -28,6 +34,12 @@ const useStyles = makeStyles((theme) => ({
   title: {
     display: 'flex',
     alignItems: 'center'
+  },
+  notification: {
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end'
   }
 }));
 
@@ -57,7 +69,26 @@ function MenuAppBar() {
             <Search />
           </Grid>
           <Grid item className={classes.gridItem} xs={4}>
-            <p>test</p>
+            <div className={classes.notification}>
+              <IconButton aria-label="show 4 new mails" color="inherit">
+                <Badge badgeContent={4} color="secondary">
+                  <MailIcon />
+                </Badge>
+              </IconButton>
+              <IconButton aria-label="show 17 new notifications" color="inherit">
+                <Badge badgeContent={17} color="secondary">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </div>
           </Grid>
         </Grid>
       </Toolbar>
