@@ -6,18 +6,28 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-
+import Grid from '@material-ui/core/Grid';
 import Search from '../AppBar/Search';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  grow: {
+    flexGrow: 1,
+  },
+  gridItem: {
+    display: 'flex'
+  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  titleText: {
+    verticalAlign: 'center'
+  },
   title: {
-    flexGrow: 1,
+    display: 'flex',
+    alignItems: 'center'
   }
 }));
 
@@ -26,16 +36,30 @@ function MenuAppBar() {
   const classes = useStyles();
 
   return(
-    <AppBar position="static">
+    <AppBar className={classes.root} position="static">
       <Toolbar>
-        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h6" className={classes.title}>
-          The Good Resell
-        </Typography>
-        <Search />
-        <Button color="inherit">Login</Button>
+        <Grid
+          justify="space-between" // Add it here :)
+          container
+        >
+          <Grid item className={classes.gridItem} xs={4}>
+            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+              <MenuIcon />
+            </IconButton>
+            <div className={classes.title}>
+              <Typography variant="h6" className={classes.titleText}>
+                The Good Resell
+              </Typography>
+            </div>
+          </Grid>
+
+          <Grid item className={classes.gridItem} xs={4}>
+            <Search />
+          </Grid>
+          <Grid item className={classes.gridItem} xs={4}>
+            <p>test</p>
+          </Grid>
+        </Grid>
       </Toolbar>
     </AppBar>
   )
